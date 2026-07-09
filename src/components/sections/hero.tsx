@@ -100,7 +100,7 @@ export function Hero({
 
           <motion.h1
             variants={item}
-            className="mt-6 font-heading text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl"
+            className="mt-6 font-heading text-6xl font-bold tracking-tight sm:text-7xl"
           >
             Hi, I&apos;m{" "}
             <span className="text-gradient">{profile?.name ?? "Your Name"}</span>
@@ -108,7 +108,7 @@ export function Hero({
 
           <motion.div
             variants={item}
-            className="mt-3 font-heading text-2xl font-bold sm:text-3xl"
+            className="mt-4 font-heading text-3xl font-bold sm:text-4xl"
           >
             I&apos;m a{" "}
             <Typewriter phrases={phrases} className="text-gradient" />
@@ -116,7 +116,7 @@ export function Hero({
 
           <motion.p
             variants={item}
-            className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground lg:mx-0"
+            className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl lg:mx-0"
           >
             {profile?.tagline ??
               "I build fast, accessible web applications end to end — from database to pixel-perfect interface."}
