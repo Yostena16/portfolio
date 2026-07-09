@@ -21,10 +21,30 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://portfolio-nu-cyan-87.vercel.app";
+const ogImage =
+  "https://res.cloudinary.com/wbce8kq9/image/upload/w_1200,h_630,c_fill,g_auto/v1783611350/photo-web_ohv1wp.jpg";
+const description =
+  "Portfolio of Yostena Girma, a full-stack developer building modern web apps with Next.js, TypeScript, and Supabase.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Yostena Girma — Full-Stack Developer",
-  description:
-    "Portfolio of Yostena Girma, a full-stack developer building modern web apps with Next.js, TypeScript, and Supabase.",
+  description,
+  openGraph: {
+    title: "Yostena Girma — Full-Stack Developer",
+    description,
+    url: siteUrl,
+    siteName: "Yostena Girma",
+    type: "website",
+    images: [{ url: ogImage, width: 1200, height: 630, alt: "Yostena Girma" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Yostena Girma — Full-Stack Developer",
+    description,
+    images: [ogImage],
+  },
 };
 
 export default function RootLayout({
