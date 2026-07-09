@@ -1,5 +1,6 @@
 import { buttonVariants } from "@/components/ui/button";
 import { ContactForm } from "@/components/contact-form";
+import { Reveal } from "@/components/reveal";
 import type { Profile, Social } from "@/lib/data";
 
 export function Contact({
@@ -11,11 +12,13 @@ export function Contact({
 }) {
   return (
     <section id="contact" className="mx-auto max-w-3xl px-4 py-20 sm:px-6">
-      <h2 className="font-heading text-3xl font-bold">Contact</h2>
-      <p className="mt-4 text-muted-foreground">
-        Have a question or want to work together? Send me a message, or reach me
-        directly.
-      </p>
+      <Reveal>
+        <h2 className="font-heading text-3xl font-bold">Contact</h2>
+        <p className="mt-4 text-muted-foreground">
+          Have a question or want to work together? Send me a message, or reach
+          me directly.
+        </p>
+      </Reveal>
 
       {/* Direct email + social links */}
       <div className="mt-6 flex flex-wrap items-center gap-3">
