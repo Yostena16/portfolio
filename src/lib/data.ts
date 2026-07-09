@@ -30,6 +30,7 @@ export type Project = {
   live_url: string | null;
   repo_url: string | null;
   featured: boolean;
+  kind: string | null;
   sort_order: number;
 };
 

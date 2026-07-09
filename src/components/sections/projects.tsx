@@ -1,4 +1,4 @@
-import { ArrowUpRight, Github } from "lucide-react";
+import { ArrowUpRight, Github, Users, User } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button";
@@ -41,6 +41,16 @@ export function Projects({ projects }: { projects: Project[] }) {
                 {p.featured && (
                   <Badge className="absolute right-3 top-3 bg-background/80 text-foreground backdrop-blur">
                     ★ Featured
+                  </Badge>
+                )}
+                {p.kind && (
+                  <Badge className="absolute left-3 top-3 gap-1 bg-background/80 text-foreground backdrop-blur">
+                    {p.kind.toLowerCase() === "team" ? (
+                      <Users className="size-3" />
+                    ) : (
+                      <User className="size-3" />
+                    )}
+                    {p.kind}
                   </Badge>
                 )}
               </div>
