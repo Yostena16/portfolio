@@ -1,34 +1,57 @@
-import Link from "next/link";
-import { Github, Linkedin, Mail } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Twitter,
+  Instagram,
+  Globe,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { getProfile, getSocials } from "@/lib/data";
 
-// TODO: replace with your real links
-const socials = [
-  { href: "https://github.com/YOUR_USERNAME", label: "GitHub", Icon: Github },
-  { href: "https://linkedin.com/in/YOUR_HANDLE", label: "LinkedIn", Icon: Linkedin },
-  { href: "mailto:you@example.com", label: "Email", Icon: Mail },
-];
+function iconFor(platform: string): LucideIcon {
+  const p = platform.toLowerCase();
+  if (p.includes("github")) return Github;
+  if (p.includes("linkedin")) return Linkedin;
+  if (p.includes("instagram")) return Instagram;
+  if (p.includes("twitter") || p === "x") return Twitter;
+  if (p.includes("mail") || p.includes("email")) return Mail;
+  return Globe;
+}
 
-export function Footer() {
+export async function Footer() {
+  const [profile, socials] = await Promise.all([getProfile(), getSocials()]);
+  const year = new Date().getFullYear();
+  const name = profile?.name ?? "Yostena Girma";
+
   return (
     <footer className="border-t border-border/60">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-8 sm:flex-row sm:px-6">
-        <p className="text-sm text-muted-foreground">
-          © {/* TODO: your name */}Your Name. Built with Next.js.
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 py-10 sm:px-6">
+        {socials.length > 0 && (
+          <div className="flex gap-2.5">
+            {socials.map((s) => {
+              const Icon = iconFor(s.platform);
+              return (
+                <a
+                  key={s.id}
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.platform}
+                  className="grid size-10 place-items-center rounded-xl border border-border bg-secondary/40 text-muted-foreground transition-all hover:-translate-y-0.5 hover:bg-secondary hover:text-foreground"
+                >
+                  <Icon className="size-5" />
+                </a>
+              );
+            })}
+          </div>
+        )}
+
+        <p className="text-center text-sm text-muted-foreground">
+          Built with Next.js &amp; ☕ by{" "}
+          <span className="font-medium text-foreground">{name}</span> · ©{" "}
+          {year}
         </p>
-        <div className="flex items-center gap-2">
-          {socials.map(({ href, label, Icon }) => (
-            <Link
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={label}
-              className="rounded-md p-2 text-muted-foreground transition-colors hover:text-foreground"
-            >
-              <Icon className="size-5" />
-            </Link>
-          ))}
-        </div>
       </div>
     </footer>
   );
