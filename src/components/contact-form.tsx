@@ -3,6 +3,7 @@
 import * as React from "react";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
+import { Send } from "lucide-react";
 import { toast } from "sonner";
 import { submitMessage, type ContactState } from "@/app/actions";
 import { Button } from "@/components/ui/button";
@@ -18,9 +19,10 @@ function SubmitButton() {
       type="submit"
       size="lg"
       disabled={pending}
-      className="bg-gradient-brand text-white"
+      className="mt-1 w-full bg-gradient-brand text-white"
     >
       {pending ? "Sending..." : "Send Message"}
+      {!pending && <Send className="size-4" />}
     </Button>
   );
 }
@@ -39,22 +41,37 @@ export function ContactForm() {
   }, [state]);
 
   return (
-    <form ref={formRef} action={formAction} className="mt-6 flex flex-col gap-4">
-      <Input name="name" placeholder="Your name" required aria-label="Name" />
-      <Input
-        name="email"
-        type="email"
-        placeholder="your@email.com"
-        required
-        aria-label="Email"
-      />
-      <Textarea
-        name="message"
-        placeholder="Your message..."
-        rows={5}
-        required
-        aria-label="Message"
-      />
+    <form ref={formRef} action={formAction} className="flex flex-col gap-4">
+      <div className="flex flex-col gap-2">
+        <label htmlFor="name" className="text-sm font-medium text-muted-foreground">
+          Name
+        </label>
+        <Input id="name" name="name" placeholder="Your name" required />
+      </div>
+      <div className="flex flex-col gap-2">
+        <label htmlFor="email" className="text-sm font-medium text-muted-foreground">
+          Email
+        </label>
+        <Input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="your@email.com"
+          required
+        />
+      </div>
+      <div className="flex flex-col gap-2">
+        <label htmlFor="message" className="text-sm font-medium text-muted-foreground">
+          Message
+        </label>
+        <Textarea
+          id="message"
+          name="message"
+          placeholder="Any comment or message..."
+          rows={5}
+          required
+        />
+      </div>
       <SubmitButton />
     </form>
   );
