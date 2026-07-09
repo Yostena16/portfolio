@@ -15,7 +15,7 @@ export default async function Home() {
 
   return (
     <div id="top" className="bg-glow">
-      <Hero profile={profile} />
+      <Hero profile={profile} socials={socials} />
       <About profile={profile} />
       <Skills skills={skills} />
       <Projects projects={projects} />
