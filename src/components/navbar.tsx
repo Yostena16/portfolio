@@ -23,8 +23,7 @@ export function Navbar() {
           href="#top"
           className="font-heading text-lg font-bold tracking-tight"
         >
-          {/* TODO: your initials/name */}
-          <span className="text-gradient">YN.</span>
+          <span className="text-gradient">YG.</span>
         </Link>
 
         {/* Desktop links */}
