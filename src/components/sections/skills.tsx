@@ -1,11 +1,41 @@
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaReact,
+  FaNodeJs,
+  FaPython,
+  FaGitAlt,
+} from "react-icons/fa";
+import {
+  SiJavascript,
+  SiTypescript,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiSupabase,
+  SiMysql,
+} from "react-icons/si";
+import type { IconType } from "react-icons";
+import { Code2 } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import type { Skill } from "@/lib/data";
 
+// Map a skill name to its brand logo + color
+const iconMap: Record<string, { Icon: IconType; color: string }> = {
+  html: { Icon: FaHtml5, color: "#E34F26" },
+  css: { Icon: FaCss3Alt, color: "#1572B6" },
+  javascript: { Icon: SiJavascript, color: "#F7DF1E" },
+  typescript: { Icon: SiTypescript, color: "#3178C6" },
+  python: { Icon: FaPython, color: "#3776AB" },
+  react: { Icon: FaReact, color: "#61DAFB" },
+  "next.js": { Icon: SiNextdotjs, color: "currentColor" },
+  "tailwind css": { Icon: SiTailwindcss, color: "#06B6D4" },
+  "node.js": { Icon: FaNodeJs, color: "#5FA04E" },
+  supabase: { Icon: SiSupabase, color: "#3ECF8E" },
+  mysql: { Icon: SiMysql, color: "#4479A1" },
+  git: { Icon: FaGitAlt, color: "#F05032" },
+};
+
 export function Skills({ skills }: { skills: Skill[] }) {
-  // Preserve category order as they appear in the data
   const categories = Array.from(new Set(skills.map((s) => s.category)));
 
   return (
@@ -19,39 +49,38 @@ export function Skills({ skills }: { skills: Skill[] }) {
         </p>
       </Reveal>
 
-      {categories.length > 0 && (
-        <Reveal delay={0.1}>
-          <Tabs defaultValue={categories[0]} className="mt-10">
-            <TabsList className="flex-wrap">
-              {categories.map((c) => (
-                <TabsTrigger key={c} value={c}>
-                  {c}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-
-            {categories.map((c) => (
-              <TabsContent key={c} value={c}>
-                <Card>
-                  <CardContent className="flex flex-wrap gap-3">
-                    {skills
-                      .filter((s) => s.category === c)
-                      .map((s) => (
-                        <Badge
-                          key={s.id}
-                          variant="secondary"
-                          className="rounded-full px-4 py-2 text-sm font-medium transition-colors hover:bg-primary hover:text-primary-foreground"
-                        >
+      <div className="mt-12 space-y-12">
+        {categories.map((category) => (
+          <div key={category}>
+            <Reveal>
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                {category}
+              </h3>
+            </Reveal>
+            <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+              {skills
+                .filter((s) => s.category === category)
+                .map((s, i) => {
+                  const entry = iconMap[s.name.toLowerCase()];
+                  const Icon = entry?.Icon ?? Code2;
+                  return (
+                    <Reveal key={s.id} delay={i * 0.05}>
+                      <div className="group flex flex-col items-center gap-3 rounded-xl border border-border bg-card p-5 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10">
+                        <Icon
+                          className="size-10 transition-transform duration-300 group-hover:scale-110"
+                          style={{ color: entry?.color ?? "currentColor" }}
+                        />
+                        <span className="text-center text-sm font-medium">
                           {s.name}
-                        </Badge>
-                      ))}
-                  </CardContent>
-                </Card>
-              </TabsContent>
-            ))}
-          </Tabs>
-        </Reveal>
-      )}
+                        </span>
+                      </div>
+                    </Reveal>
+                  );
+                })}
+            </div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
