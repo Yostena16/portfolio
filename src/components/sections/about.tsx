@@ -30,7 +30,7 @@ export function About({
   stats: Stat[];
 }) {
   return (
-    <section id="about" className="mx-auto max-w-5xl px-4 py-24 sm:px-6">
+    <section id="about" className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
       <Reveal>
         <h2 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl">
           About <span className="text-gradient">Me</span>

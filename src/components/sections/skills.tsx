@@ -9,7 +9,7 @@ export function Skills({ skills }: { skills: Skill[] }) {
   const categories = Array.from(new Set(skills.map((s) => s.category)));
 
   return (
-    <section id="skills" className="mx-auto max-w-5xl px-4 py-24 sm:px-6">
+    <section id="skills" className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
       <Reveal>
         <h2 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl">
           Skills &amp; <span className="text-gradient">Tools</span>
