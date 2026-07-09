@@ -32,7 +32,7 @@ export function Contact({
   socials: Social[];
 }) {
   return (
-    <section id="contact" className="mx-auto max-w-5xl px-4 py-24 sm:px-6">
+    <section id="contact" className="mx-auto max-w-5xl px-4 pb-24 pt-8 sm:px-6">
       <Reveal>
         <h2 className="text-center font-heading text-4xl font-bold tracking-tight sm:text-5xl">
           Contact <span className="text-gradient">Me</span>
