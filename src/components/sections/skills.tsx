@@ -13,6 +13,7 @@ import {
   SiTailwindcss,
   SiSupabase,
   SiMysql,
+  SiExpress,
 } from "react-icons/si";
 import type { IconType } from "react-icons";
 import { Code2 } from "lucide-react";
@@ -30,6 +31,7 @@ const iconMap: Record<string, { Icon: IconType; color: string }> = {
   "next.js": { Icon: SiNextdotjs, color: "currentColor" },
   "tailwind css": { Icon: SiTailwindcss, color: "#06B6D4" },
   "node.js": { Icon: FaNodeJs, color: "#5FA04E" },
+  "express.js": { Icon: SiExpress, color: "currentColor" },
   supabase: { Icon: SiSupabase, color: "#3ECF8E" },
   mysql: { Icon: SiMysql, color: "#4479A1" },
   git: { Icon: FaGitAlt, color: "#F05032" },
