@@ -11,6 +11,7 @@ export type Profile = {
   resume_url: string | null;
   location: string | null;
   email: string | null;
+  education: string | null;
 };
 
 export type Skill = {
@@ -36,6 +37,13 @@ export type Social = {
   id: number;
   platform: string;
   url: string;
+  sort_order: number;
+};
+
+export type Stat = {
+  id: number;
+  label: string;
+  value: string;
   sort_order: number;
 };
 
@@ -89,6 +97,19 @@ export async function getSocials(): Promise<Social[]> {
 
   if (error) {
     console.error("getSocials error:", error.message);
+    return [];
+  }
+  return data ?? [];
+}
+
+export async function getStats(): Promise<Stat[]> {
+  const { data, error } = await supabase
+    .from("stats")
+    .select("*")
+    .order("sort_order");
+
+  if (error) {
+    console.error("getStats error:", error.message);
     return [];
   }
   return data ?? [];
