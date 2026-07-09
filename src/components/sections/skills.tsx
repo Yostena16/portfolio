@@ -41,7 +41,21 @@ export function Skills({ skills }: { skills: Skill[] }) {
   const categories = Array.from(new Set(skills.map((s) => s.category)));
 
   return (
-    <section id="skills" className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
+    <section
+      id="skills"
+      className="relative mx-auto max-w-6xl overflow-hidden px-4 py-24 sm:px-6"
+    >
+      {/* Ambient background — matches the hero's glow + grid (both themes) */}
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-glow" />
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 opacity-40 [mask-image:radial-gradient(70%_60%_at_50%_40%,#000,transparent_80%)]"
+        style={{
+          backgroundImage:
+            "linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)",
+          backgroundSize: "54px 54px",
+        }}
+      />
+
       <Reveal>
         <h2 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl">
           Skills &amp; <span className="text-gradient">Tools</span>
