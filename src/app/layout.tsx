@@ -22,10 +22,9 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  // TODO: replace with your name + role
-  title: "Your Name — Full-Stack Developer",
+  title: "Yostena Girma — Full-Stack Developer",
   description:
-    "Portfolio of Your Name, a full-stack developer building modern web apps.",
+    "Portfolio of Yostena Girma, a full-stack developer building modern web apps with Next.js, TypeScript, and Supabase.",
 };
 
 export default function RootLayout({
