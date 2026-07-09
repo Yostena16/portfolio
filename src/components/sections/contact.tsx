@@ -26,8 +26,7 @@ export function Contact({
   return (
     <section id="contact" className="mx-auto max-w-3xl px-4 py-24 sm:px-6">
       <Reveal>
-        <p className="font-mono text-sm font-medium text-primary">// contact</p>
-        <h2 className="mt-2 text-center font-heading text-4xl font-bold tracking-tight sm:text-5xl">
+        <h2 className="text-center font-heading text-4xl font-bold tracking-tight sm:text-5xl">
           Let&apos;s <span className="text-gradient">Connect</span>
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">

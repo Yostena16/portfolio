@@ -9,10 +9,7 @@ export function Projects({ projects }: { projects: Project[] }) {
   return (
     <section id="projects" className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
       <Reveal>
-        <p className="font-mono text-sm font-medium text-primary">
-          // portfolio
-        </p>
-        <h2 className="mt-2 font-heading text-4xl font-bold tracking-tight sm:text-5xl">
+        <h2 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl">
           Featured <span className="text-gradient">Projects</span>
         </h2>
         <p className="mt-4 max-w-2xl text-muted-foreground">
