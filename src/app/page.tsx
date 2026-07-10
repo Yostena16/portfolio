@@ -11,6 +11,10 @@ import { Skills } from "@/components/sections/skills";
 import { Projects } from "@/components/sections/projects";
 import { Contact } from "@/components/sections/contact";
 
+// Always fetch fresh content from Supabase on each request (no static caching),
+// so edits in the database appear on the live site without a redeploy.
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const [profile, skills, projects, socials, stats] = await Promise.all([
     getProfile(),
