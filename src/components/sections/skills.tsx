@@ -3,22 +3,27 @@ import {
   FaCss3Alt,
   FaReact,
   FaNodeJs,
-  FaPython,
   FaGitAlt,
+  FaBug,
 } from "react-icons/fa";
 import {
   SiJavascript,
   SiTypescript,
   SiNextdotjs,
   SiTailwindcss,
-  SiSupabase,
   SiMysql,
   SiExpress,
+  SiGo,
+  SiDjango,
+  SiSupabase,
 } from "react-icons/si";
+import { MdOutlineFactCheck } from "react-icons/md";
 import type { IconType } from "react-icons";
 import { Code2 } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import type { Skill } from "@/lib/data";
+
+const CATEGORY_ORDER = ["Frontend", "Backend", "Testing & QA", "Tools"];
 
 // Map a skill name to its brand logo + color
 const iconMap: Record<string, { Icon: IconType; color: string }> = {
@@ -26,19 +31,24 @@ const iconMap: Record<string, { Icon: IconType; color: string }> = {
   css: { Icon: FaCss3Alt, color: "#1572B6" },
   javascript: { Icon: SiJavascript, color: "#F7DF1E" },
   typescript: { Icon: SiTypescript, color: "#3178C6" },
-  python: { Icon: FaPython, color: "#3776AB" },
   react: { Icon: FaReact, color: "#61DAFB" },
   "next.js": { Icon: SiNextdotjs, color: "currentColor" },
   "tailwind css": { Icon: SiTailwindcss, color: "#06B6D4" },
   "node.js": { Icon: FaNodeJs, color: "#5FA04E" },
   "express.js": { Icon: SiExpress, color: "currentColor" },
-  supabase: { Icon: SiSupabase, color: "#3ECF8E" },
+  go: { Icon: SiGo, color: "#00ADD8" },
+  django: { Icon: SiDjango, color: "#092E20" },
   mysql: { Icon: SiMysql, color: "#4479A1" },
+  supabase: { Icon: SiSupabase, color: "#3ECF8E" },
+  "functional testing": { Icon: MdOutlineFactCheck, color: "#22C55E" },
+  "bug tracking": { Icon: FaBug, color: "#EF4444" },
   git: { Icon: FaGitAlt, color: "#F05032" },
 };
 
 export function Skills({ skills }: { skills: Skill[] }) {
-  const categories = Array.from(new Set(skills.map((s) => s.category)));
+  const categories = CATEGORY_ORDER.filter((c) =>
+    skills.some((s) => s.category === c),
+  );
 
   return (
     <section
