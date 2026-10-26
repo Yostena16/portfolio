@@ -22,17 +22,17 @@ export function Projects({ projects }: { projects: Project[] }) {
         {projects.map((p, i) => (
           <Reveal key={p.id} delay={i * 0.1}>
             <Card className="group h-full overflow-hidden pt-0 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10">
-              {/* Cover image (or gradient fallback) */}
-              <div className="relative aspect-video w-full overflow-hidden bg-gradient-brand">
+              {/* Cover image / logo */}
+              <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden bg-white p-8 dark:bg-secondary/40">
                 {p.image_url ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={p.image_url}
                     alt={p.title}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
                   />
                 ) : (
-                  <div className="flex h-full w-full items-center justify-center">
+                  <div className="flex h-full w-full items-center justify-center bg-gradient-brand">
                     <span className="font-heading text-5xl font-bold text-white/90">
                       {p.title.charAt(0)}
                     </span>
