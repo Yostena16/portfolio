@@ -70,7 +70,7 @@ const profile: Profile = {
     "Frontend, backend, and software testing — building usable web features and shipping reliable systems.",
   bio: "Fourth-year Software Engineering student at Addis Ababa University with hands-on experience in frontend and backend development, responsive user interfaces, microservices-based systems, API integration, and software quality assurance. I collaborate with developers and designers to build usable web features, test core workflows, and identify defects.",
   photo_url: "/images/profile.jpg",
-  resume_url: null,
+  resume_url: "/cv/Yostena_Girma_Asefa_CV.pdf",
   location: "Addis Ababa, Ethiopia",
   email: "yostenagirma19@gmail.com",
   education: "BSc Software Engineering, Addis Ababa University",

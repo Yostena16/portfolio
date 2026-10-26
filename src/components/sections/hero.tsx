@@ -2,7 +2,15 @@
 
 import Image from "next/image"; //Optimized image component for the picture
 import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin, Mail, Twitter, Globe } from "lucide-react"; //icons
+import {
+  ArrowRight,
+  Download,
+  Github,
+  Linkedin,
+  Mail,
+  Twitter,
+  Globe,
+} from "lucide-react";
 import type { LucideIcon } from "lucide-react";  //icon type
 import { buttonVariants } from "@/components/ui/button";
 import { Typewriter } from "@/components/typewriter";
@@ -129,13 +137,24 @@ export function Hero({
             >
               View Projects <ArrowRight className="size-4" />
             </a>
-            {/* TODO: swap to "Download CV" once a resume PDF is uploaded to Cloudinary */}
-            <a
-              href="#contact"
-              className={buttonVariants({ size: "lg", variant: "outline" })}
-            >
-              Get in Touch
-            </a>
+            {profile?.resume_url ? (
+              <a
+                href={profile.resume_url}
+                download="Yostena_Girma_Asefa_CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={buttonVariants({ size: "lg", variant: "outline" })}
+              >
+                Download CV <Download className="size-4" />
+              </a>
+            ) : (
+              <a
+                href="#contact"
+                className={buttonVariants({ size: "lg", variant: "outline" })}
+              >
+                Get in Touch
+              </a>
+            )}
           </motion.div>
 
           {socials.length > 0 && (
