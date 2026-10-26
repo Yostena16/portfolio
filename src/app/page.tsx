@@ -2,6 +2,7 @@ import {
   getProfile,
   getSkills,
   getProjects,
+  getAchievements,
   getSocials,
   getStats,
 } from "@/lib/data";
@@ -9,20 +10,19 @@ import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
 import { Skills } from "@/components/sections/skills";
 import { Projects } from "@/components/sections/projects";
+import { Achievements } from "@/components/sections/achievements";
 import { Contact } from "@/components/sections/contact";
 
-// Always fetch fresh content from Supabase on each request (no static caching),
-// so edits in the database appear on the live site without a redeploy.
-export const dynamic = "force-dynamic";
-
 export default async function Home() {
-  const [profile, skills, projects, socials, stats] = await Promise.all([
-    getProfile(),
-    getSkills(),
-    getProjects(),
-    getSocials(),
-    getStats(),
-  ]);
+  const [profile, skills, projects, achievements, socials, stats] =
+    await Promise.all([
+      getProfile(),
+      getSkills(),
+      getProjects(),
+      getAchievements(),
+      getSocials(),
+      getStats(),
+    ]);
 
   return (
     <div id="top" className="bg-glow">
@@ -30,6 +30,7 @@ export default async function Home() {
       <About profile={profile} stats={stats} />
       <Skills skills={skills} />
       <Projects projects={projects} />
+      <Achievements achievements={achievements} />
       <Contact profile={profile} socials={socials} />
     </div>
   );
