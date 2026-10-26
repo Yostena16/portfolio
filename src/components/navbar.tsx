@@ -4,7 +4,6 @@ import * as React from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ModeToggle } from "@/components/mode-toggle";
 
 const links = [
   { href: "#about", label: "About" },
@@ -38,14 +37,10 @@ export function Navbar() {
               {l.label}
             </Link>
           ))}
-          <div className="ml-2">
-            <ModeToggle />
-          </div>
         </div>
 
         {/* Mobile controls */}
         <div className="flex items-center gap-1 md:hidden">
-          <ModeToggle />
           <Button
             variant="ghost"
             size="icon"

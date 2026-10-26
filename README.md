@@ -9,7 +9,7 @@ My personal portfolio website — a modern single-page app built to showcase my 
 - **Local content** — profile, skills, projects, socials, and stats live in `src/lib/data.ts` (no external database required)
 - **Working contact form** — messages are validated and emailed to Gmail via FormSubmit
 - **Bold, animated UI** — split hero with a typewriter effect, floating gradient blobs, and scroll-reveal animations (Framer Motion)
-- **Light & dark themes** — with a toggle, built on shadcn/ui
+- **Dark theme** — fixed dark UI built on shadcn/ui
 - **Fully responsive** and optimized images via Cloudinary + `next/image`
 
 ## 🛠️ Tech Stack

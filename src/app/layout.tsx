@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
@@ -50,26 +49,18 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode; //children can be basically anything react can render (text, images, other components, etc.)
+  children: React.ReactNode;
 }>) {
   return (
     <html
-      lang="en" 
-      suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} h-full scroll-smooth antialiased`}
+      lang="en"
+      className={`dark ${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} h-full scroll-smooth antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <ThemeProvider //enables theme (dark / light) to persist across page loads and be saved in the browser's local storage  
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <Toaster richColors position="top-center" />
-        </ThemeProvider>
+        <Navbar />
+        <main className="flex-1">{children}</main>
+        <Footer />
+        <Toaster richColors position="top-center" />
       </body>
     </html>
   );
