@@ -19,7 +19,7 @@ function statIcon(label: string): LucideIcon {
   if (l.includes("project")) return Rocket;
   if (l.includes("year")) return CalendarDays;
   if (l.includes("tech")) return Wrench;
-  return Sparkles;
+  return Sparkles; //if the above not matched 
 }
 
 export function About({
@@ -81,7 +81,15 @@ export function About({
 
       {/* Stats */}
       {stats.length > 0 && (
-        <div className="mt-14 grid gap-4 sm:grid-cols-3">
+        <div
+          className={`mt-14 grid gap-4 ${
+            stats.length === 1
+              ? "sm:grid-cols-1 max-w-sm"
+              : stats.length === 2
+                ? "sm:grid-cols-2"
+                : "sm:grid-cols-3"
+          }`}
+        >
           {stats.map((s, i) => {
             const Icon = statIcon(s.label);
             return (
