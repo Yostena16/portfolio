@@ -1,13 +1,13 @@
 # Yostena Girma — Portfolio
 
-My personal portfolio website — a full-stack, database-driven single-page app built to showcase my projects, skills, and background as a full-stack developer.
+My personal portfolio website — a modern single-page app built to showcase my projects, skills, and background as a full-stack developer.
 
 🔗 **Live:** https://portfolio-nu-cyan-87.vercel.app
 
 ## ✨ Features
 
-- **Backend-driven content** — profile, skills, projects, socials, and stats are all served from a Supabase (Postgres) database, editable without touching code
-- **Working contact form** — messages are validated and saved to the database via a Next.js Server Action
+- **Local content** — profile, skills, projects, socials, and stats live in `src/lib/data.ts` (no external database required)
+- **Working contact form** — messages are validated and emailed to Gmail via FormSubmit
 - **Bold, animated UI** — split hero with a typewriter effect, floating gradient blobs, and scroll-reveal animations (Framer Motion)
 - **Light & dark themes** — with a toggle, built on shadcn/ui
 - **Fully responsive** and optimized images via Cloudinary + `next/image`
@@ -20,7 +20,7 @@ My personal portfolio website — a full-stack, database-driven single-page app 
 | Language | TypeScript |
 | Styling | Tailwind CSS v4, [shadcn/ui](https://ui.shadcn.com/) |
 | Animation | Framer Motion |
-| Backend / DB | [Supabase](https://supabase.com/) (Postgres + Row Level Security) |
+| Contact email | [FormSubmit](https://formsubmit.co/) |
 | Images | [Cloudinary](https://cloudinary.com/) |
 | Icons | lucide-react, react-icons |
 | Hosting | [Vercel](https://vercel.com/) |
@@ -35,7 +35,7 @@ cd portfolio
 # 2. Install dependencies
 pnpm install
 
-# 3. Set up environment variables (see below)
+# 3. Set up environment variables (optional — only needed for the contact form)
 
 # 4. Run the dev server
 pnpm dev
@@ -43,18 +43,13 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-### Environment variables
+### Contact form
 
-Create a `.env.local` file with your Supabase project credentials:
+The contact form emails submissions to `yostenagirma19@gmail.com` through FormSubmit. On first use, FormSubmit sends a one-time activation email — open Gmail and click **Activate** once, then future messages arrive normally.
 
-```
-NEXT_PUBLIC_SUPABASE_URL=your-supabase-project-url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
-```
+## 📝 Updating content
 
-## 🗄️ Database
-
-Content is stored in Supabase across these tables: `profile`, `skills`, `projects`, `socials`, `stats`, and `messages`. Public read access is enabled on content tables; the `messages` table only allows inserts (contact submissions), so submissions stay private.
+Edit `src/lib/data.ts` to change your profile, skills, projects, social links, and stats.
 
 ## 📁 Project Structure
 
@@ -64,7 +59,7 @@ src/
 ├── components/
 │   ├── sections/   # Hero, About, Skills, Projects, Contact
 │   └── ui/         # shadcn/ui components
-└── lib/            # Supabase client + typed data fetchers
+└── lib/            # Portfolio content + typed accessors
 ```
 
 ## 📫 Contact

@@ -25,14 +25,14 @@ const siteUrl = "https://portfolio-nu-cyan-87.vercel.app";
 const ogImage =
   "https://res.cloudinary.com/wbce8kq9/image/upload/w_1200,h_630,c_fill,g_auto/v1783611350/photo-web_ohv1wp.jpg";
 const description =
-  "Portfolio of Yostena Girma, a full-stack developer building modern web apps with Next.js, TypeScript, and Supabase.";
+  "Portfolio of Yostena Girma, a Software Engineering student building frontend, backend, and tested web experiences.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Yostena Girma — Full-Stack Developer",
+  title: "Yostena Girma — Software Engineering Student",
   description,
   openGraph: {
-    title: "Yostena Girma — Full-Stack Developer",
+    title: "Yostena Girma — Software Engineering Student",
     description,
     url: siteUrl,
     siteName: "Yostena Girma",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yostena Girma — Full-Stack Developer",
+    title: "Yostena Girma — Software Engineering Student",
     description,
     images: [ogImage],
   },
@@ -50,16 +50,16 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode; //children can be basically anything react can render (text, images, other components, etc.)
 }>) {
   return (
     <html
-      lang="en"
+      lang="en" 
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} h-full scroll-smooth antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <ThemeProvider
+        <ThemeProvider //enables theme (dark / light) to persist across page loads and be saved in the browser's local storage  
           attribute="class"
           defaultTheme="dark"
           enableSystem
