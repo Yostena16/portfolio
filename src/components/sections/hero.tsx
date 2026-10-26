@@ -1,16 +1,16 @@
 "use client";
 
-import Image from "next/image";
+import Image from "next/image"; //Optimized image component for the picture
 import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin, Mail, Twitter, Globe } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail, Twitter, Globe } from "lucide-react"; //icons
+import type { LucideIcon } from "lucide-react";  //icon type
 import { buttonVariants } from "@/components/ui/button";
 import { Typewriter } from "@/components/typewriter";
 import type { Profile, Social } from "@/lib/data";
 
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.13, delayChildren: 0.1 } },
+  show: { transition: { staggerChildren: 0.13, delayChildren: 0.1 } }, //animate children one after the other with 0.13 apart
 };
 const item = {
   hidden: { opacity: 0, y: 24 },
@@ -30,13 +30,6 @@ function iconFor(platform: string): LucideIcon {
   return Globe;
 }
 
-// Floating tech badges shown around the photo (decorative)
-const floatBadges = [
-  { label: "TypeScript", color: "#3178c6", pos: "left-[-6%] top-[8%]", dur: 6 },
-  { label: "Supabase", color: "#3ecf8e", pos: "right-[-8%] bottom-[16%]", dur: 8 },
-  { label: "Next.js", color: "#8b5cf6", pos: "left-[12%] bottom-[-3%]", dur: 7 },
-];
-
 export function Hero({
   profile,
   socials,
@@ -45,15 +38,16 @@ export function Hero({
   socials: Social[];
 }) {
   const phrases = [
-    profile?.role ?? "Developer",
-    "Next.js Developer",
-    "Problem Solver",
+    "Frontend Developer",
+    "Backend Developer",
+    "Software Tester",
+    "Software Engineering Student",
   ];
   const initials = (profile?.name ?? "You")
     .split(" ")
-    .map((w) => w[0])
-    .slice(0, 2)
-    .join("");
+    .map((w) => w[0]) // Takes the first letter of each word (Y O G)
+    .slice(0, 2)      // Only take the first 2 letters
+    .join("");       // Makes it Y O
 
   return (
     <section className="relative overflow-hidden">
@@ -199,27 +193,6 @@ export function Hero({
               )}
             </div>
           </motion.div>
-
-          {/* Floating tech badges */}
-          {floatBadges.map((b, i) => (
-            <motion.div
-              key={b.label}
-              animate={{ y: [0, -10, 0] }}
-              transition={{
-                duration: b.dur,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: i * 0.4,
-              }}
-              className={`absolute ${b.pos} flex items-center gap-2 rounded-xl border border-border bg-card/80 px-3 py-2 text-sm font-semibold shadow-xl backdrop-blur`}
-            >
-              <span
-                className="size-2.5 rounded-full"
-                style={{ backgroundColor: b.color }}
-              />
-              {b.label}
-            </motion.div>
-          ))}
         </motion.div>
       </div>
     </section>
